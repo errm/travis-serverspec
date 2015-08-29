@@ -1,0 +1,9 @@
+sudo: required
+
+language: ruby
+
+services:
+  - docker
+script:
+  - docker -v
+  - bundle exec rspec dockerfile_spec.rb
