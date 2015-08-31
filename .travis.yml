@@ -4,6 +4,8 @@ language: ruby
 
 services:
   - docker
+before_install:
+  - curl -sSL https://get.docker.com/ | sh
 script:
   - docker -v
   - bundle exec rspec dockerfile_spec.rb
