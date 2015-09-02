@@ -3,7 +3,7 @@ sudo: required
 language: ruby
 
 before_script:
-  - source <(curl -sL https://raw.githubusercontent.com/zuazo/kitchen-in-travis/0.3.0/scripts/start_docker.sh)
+  - curl -sLo - http://j.mp/install-travis-docker | sh -xe
 script:
   - docker info
   - docker -v
