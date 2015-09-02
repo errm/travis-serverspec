@@ -19,13 +19,19 @@ sudo apt-get -y update
 sudo apt-get install -y ca-certificates curl
 echo ''
 
+echo 'Installing docker repository'
+curl https://get.docker.com/gpg | sudo apt-key add -
+echo 'deb https://get.docker.io/ubuntu docker main' | sudo tee /etc/apt/sources.list.d/docker.list
+echo ''
+
 echo 'Prevent APT starting any service'
 echo exit 101 | sudo tee /usr/sbin/policy-rc.d
 sudo chmod +x /usr/sbin/policy-rc.d
 echo ''
 
 echo 'Installing Docker'
-curl -sSL https://get.docker.com/ | sudo sh
+sudo apt-get -y update
+sudo apt-get -y install lxc lxc-docker slirp
 sudo sudo usermod -aG docker "$USER"
 echo ''
 
@@ -40,8 +46,8 @@ echo ''
 echo 'Waiting Docker to start'
 while ! docker info &> /dev/null
 do
-    sleep 1
-  done
-  echo ''
+  sleep 1
+done
+echo ''
 
 docker version
