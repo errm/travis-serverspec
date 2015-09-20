@@ -1,9 +1,7 @@
 sudo: required
-
 language: ruby
-
-before_script:
-  - source start_docker.sh
+services:
+  - docker
 script:
   - docker info
   - docker -v
